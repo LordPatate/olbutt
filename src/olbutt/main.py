@@ -1,11 +1,27 @@
+import subprocess
+import sys
+import tomllib
 from argparse import ArgumentParser, Namespace
+from typing import NamedTuple
+
+
+class Button(NamedTuple):
+    title: str
+    description: str
+    command: str
 
 
 def olbutt(button: str):
     # load buttons file
-    ...
+    with open("buttfile.toml", "rb") as f:
+        buttons = tomllib.load(f)
     # execute corresponding entry
-    ...
+    selected_button = Button(**buttons[button])
+    completed_process = subprocess.run(
+        selected_button.command,
+        shell=True,
+    )
+    return completed_process.returncode
 
 
 def get_args() -> Namespace:
@@ -16,7 +32,8 @@ def get_args() -> Namespace:
 
 def main():
     args = get_args()
-    olbutt(args.button)
+    code = olbutt(args.button)
+    sys.exit(code)
 
 
 if __name__ == "__main__":
