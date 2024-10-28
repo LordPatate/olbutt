@@ -1,0 +1,9 @@
+[run]
+title = "Usage"
+description = "To run the script, run:"
+command = "python -m src.main"
+
+[test]
+title = "Testing"
+description = "To run tests, use:"
+command = "pytest"
