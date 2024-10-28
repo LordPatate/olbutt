@@ -6,9 +6,9 @@ from typing import NamedTuple
 
 
 class Button(NamedTuple):
-    title: str
-    description: str
     command: str
+    title: str | None = None
+    description: str | None = None
 
 
 def olbutt(button: str):
