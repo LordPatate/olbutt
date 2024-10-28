@@ -6,7 +6,7 @@ command = "python -m src.main"
 [test]
 title = "Testing"
 description = "To run tests, use:"
-command = "pytest"
+command = "pytest test"
 
 [hello]
 title = "Hello"
