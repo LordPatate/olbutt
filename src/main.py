@@ -1,22 +1,13 @@
 import subprocess
 import sys
-import tomllib
 from argparse import ArgumentParser, Namespace
-from typing import NamedTuple
 
-
-class Button(NamedTuple):
-    command: str
-    title: str | None = None
-    description: str | None = None
+from src.buttfile import load_buttons
 
 
 def olbutt(button: str):
-    # load buttons file
-    with open("buttfile.toml", "rb") as f:
-        buttons = tomllib.load(f)
-    # execute corresponding entry
-    selected_button = Button(**buttons[button])
+    buttons = load_buttons()
+    selected_button = buttons[button]
     completed_process = subprocess.run(
         selected_button.command,
         shell=True,
