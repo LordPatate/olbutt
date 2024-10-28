@@ -5,7 +5,7 @@ from argparse import ArgumentParser, Namespace
 from src.buttfile import load_buttons
 
 
-def olbutt(button: str):
+def olbutt(button: str) -> int:
     buttons = load_buttons()
     selected_button = buttons[button]
     completed_process = subprocess.run(
